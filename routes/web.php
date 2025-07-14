@@ -5,12 +5,14 @@ use App\Http\Controllers\HeroController;
 use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SkillController;
+use App\Http\Controllers\WelcomeController;
 use App\Models\Contact;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+Route::get('/', [WelcomeController::class, 'index']);
 
 Route::get('/storage/{folder}/{filename}', function ($folder, $filename) {
     $allowedFolders = ['heroes', 'portfolios'];

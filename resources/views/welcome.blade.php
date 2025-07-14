@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Almutaqi | Fullstack Web Developer</title>
+    <title>{{ $hero->name }} | {{ $hero->subname }}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -231,10 +231,9 @@
         <div class="container hero-content">
             <div class="row align-items-center">
                 <div class="col-lg-6">
-                    <h1 class="display-4">Almutaqi</h1>
-                    <h2 class="h3 mb-4">Fullstack Web Developer</h2>
-                    <p class="lead mb-4">Spesialis pengembangan aplikasi web dengan Laravel, membangun sistem yang
-                        skalabel, aman, dan efisien</p>
+                    <h1 class="display-4">{{ $hero->name }}</h1>
+                    <h2 class="h3 mb-4">{{ $hero->subname }}</h2>
+                    <p class="lead mb-4">{{ $hero->description }}</p>
                     <div class="d-flex gap-3">
                         <a href="#contact" class="btn btn-primary btn-lg">
                             <i class="fas fa-paper-plane me-2"></i> Hubungi Saya
@@ -245,7 +244,7 @@
                     </div>
                 </div>
                 <div class="col-lg-6 d-none d-lg-block">
-                    <img src="{{ asset('assets/img/Hire-Laravel-Developer.png') }}" alt="Laravel Developer"
+                    <img src="{{ asset('storage/' . $hero->image) }}" alt="Laravel Developer"
                         class="img-fluid rounded-3 shadow">
                 </div>
             </div>
