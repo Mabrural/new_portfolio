@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Hero;
+use App\Models\Portfolio;
 use App\Models\Skill;
 use Illuminate\Http\Request;
 
@@ -12,6 +13,8 @@ class WelcomeController extends Controller
     {
         $hero = Hero::first();
         $skills = Skill::all();
-        return view('welcome', compact('hero', 'skills'));
+        $portfolios = Portfolio::orderBy('id', 'desc')->get();
+
+        return view('welcome', compact('hero', 'skills', 'portfolios'));
     }
 }

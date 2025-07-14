@@ -272,93 +272,67 @@
         </div>
     </section>
 
-
-    <!-- Portfolio Section -->
+    {{-- Portfolio Section --}}
     <section class="py-5" id="portfolio">
         <div class="container py-5">
             <h2 class="text-center section-title">Portofolio</h2>
             <p class="text-center mb-5">Beberapa proyek terbaru yang telah saya kerjakan</p>
 
-            <ul class="nav nav-pills justify-content-center mb-4" id="portfolio-tab" role="tablist">
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="all-tab" data-bs-toggle="pill" data-bs-target="#all"
-                        type="button" role="tab">Semua</button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="ecommerce-tab" data-bs-toggle="pill" data-bs-target="#ecommerce"
-                        type="button" role="tab">E-Commerce</button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="crm-tab" data-bs-toggle="pill" data-bs-target="#crm" type="button"
-                        role="tab">CRM</button>
-                </li>
-            </ul>
+            <div class="row g-4">
+                @foreach ($portfolios as $portfolio)
+                    <div class="col-md-4">
+                        <div class="card project">
+                            <img src="{{ asset('storage/' . $portfolio->image1) }}" class="card-img-top"
+                                alt="{{ $portfolio->title }}">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ $portfolio->title }}</h5>
+                                <p class="card-text">{{ Str::limit($portfolio->description, 100) }}</p>
+                                <a href="#" class="btn btn-outline-primary btn-sm" data-bs-toggle="modal"
+                                    data-bs-target="#portfolioModal{{ $portfolio->id }}">Lihat Detail</a>
+                            </div>
+                        </div>
+                    </div>
 
-            <div class="tab-content" id="portfolio-tabContent">
-                <div class="tab-pane fade show active" id="all" role="tabpanel">
-                    <div class="row g-4">
-                        <div class="col-md-4">
-                            <div class="card project">
-                                <img src="{{ asset('assets/img/laravel_banner011.png') }}" class="card-img-top"
-                                    alt="Sistem Inventory">
-                                <div class="card-body">
-                                    <h5 class="card-title">Sistem Manajemen Inventory</h5>
-                                    <p class="card-text">Aplikasi inventory dengan multi-gudang, notifikasi stok
-                                        minimum, dan laporan bulanan.</p>
-                                    <div class="mb-3">
-                                        <span class="badge badge-tech">Laravel</span>
-                                        <span class="badge badge-tech">Livewire</span>
-                                        <span class="badge badge-tech">MySQL</span>
-                                    </div>
-                                    <a href="#" class="btn btn-outline-primary btn-sm">Lihat Detail</a>
+                    <!-- Modal -->
+                    <div class="modal fade" id="portfolioModal{{ $portfolio->id }}" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-lg modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">{{ $portfolio->title }}</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card project">
-                                <img src="{{ asset('assets/img/laravel_banner011.png') }}" class="card-img-top"
-                                    alt="HR System">
-                                <div class="card-body">
-                                    <h5 class="card-title">Sistem HR & Payroll</h5>
-                                    <p class="card-text">Manajemen karyawan, absensi, penggajian dengan slip gaji
-                                        otomatis.</p>
-                                    <div class="mb-3">
-                                        <span class="badge badge-tech">Laravel</span>
-                                        <span class="badge badge-tech">Bootstrap</span>
-                                        <span class="badge badge-tech">JQuery</span>
+                                <div class="modal-body">
+                                    <p>{{ $portfolio->description }}</p>
+
+                                    <div class="row">
+                                        @for ($i = 1; $i <= 5; $i++)
+                                            @php
+                                                $imageField = 'image' . $i;
+                                            @endphp
+                                            @if ($portfolio->$imageField)
+                                                <div class="col-md-6 mb-3">
+                                                    <img src="{{ asset('storage/' . $portfolio->$imageField) }}"
+                                                        class="img-fluid rounded"
+                                                        alt="{{ $portfolio->title }} image {{ $i }}">
+                                                </div>
+                                            @endif
+                                        @endfor
                                     </div>
-                                    <a href="#" class="btn btn-outline-primary btn-sm">Lihat Detail</a>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card project">
-                                <img src="{{ asset('assets/img/laravel_banner011.png') }}" class="card-img-top"
-                                    alt="POS System">
-                                <div class="card-body">
-                                    <h5 class="card-title">Aplikasi Kasir Modern</h5>
-                                    <p class="card-text">Sistem point-of-sale dengan inventori, laporan keuangan, dan
-                                        ekspor PDF/Excel.</p>
-                                    <div class="mb-3">
-                                        <span class="badge badge-tech">Laravel</span>
-                                        <span class="badge badge-tech">Livewire</span>
-                                        <span class="badge badge-tech">Bootstrap</span>
-                                    </div>
-                                    <a href="#" class="btn btn-outline-primary btn-sm">Lihat Detail</a>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Tutup</button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="tab-pane fade" id="ecommerce" role="tabpanel">
-                    <!-- Ecommerce projects would go here -->
-                </div>
-                <div class="tab-pane fade" id="crm" role="tabpanel">
-                    <!-- CRM projects would go here -->
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
+
+
 
     <!-- Contact Section -->
     <section class="py-5 bg-light" id="contact">
