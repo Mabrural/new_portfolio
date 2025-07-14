@@ -32,6 +32,13 @@ Route::get('/dashboard', function () {
 Route::resource('heroes', HeroController::class);
 Route::resource('skills', SkillController::class);
 
+Route::get('portfolio', function() {
+    return "portfolio";
+})->name('portfolio.index');
+Route::get('contact', function() {
+    return "contact";
+})->name('contact.index');
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

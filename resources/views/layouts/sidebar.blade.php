@@ -42,17 +42,18 @@
                         <p>Manage Skill Section</p>
                     </a>
                 </li>
-                <li class="nav-item {{ request()->routeIs('my-portfolio') ? 'active' : '' }}">
-                    <a href="{{ route('dashboard') }}">
+                <li class="nav-item {{ request()->routeIs('portfolio.*') ? 'active' : '' }}">
+                    <a href="{{ route('portfolio.index') }}">
                         <i class="fas fa-briefcase"></i>
                         <p>Manage My Portfolio</p>
                     </a>
                 </li>
-
-
-
-
-
+                <li class="nav-item {{ request()->routeIs('contact.*') ? 'active' : '' }}">
+                    <a href="{{ route('contact.index') }}">
+                        <i class="fas fa-address-book"></i>
+                        <p>Manage My Contact</p>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
