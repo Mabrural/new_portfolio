@@ -3,7 +3,7 @@
 
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Login - PetroPlan</title>
+    <title>Login - MyPortfolio</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <link rel="icon" href="{{ asset('assets/img/favicon.png') }}" type="image/x-icon" />
 
@@ -11,7 +11,9 @@
     <script src="{{ asset('assets/js/plugin/webfont/webfont.min.js') }}"></script>
     <script>
         WebFont.load({
-            google: { families: ["Public Sans:300,400,500,600,700"] },
+            google: {
+                families: ["Public Sans:300,400,500,600,700"]
+            },
             custom: {
                 families: [
                     "Font Awesome 5 Solid",
@@ -21,7 +23,9 @@
                 ],
                 urls: ["{{ asset('assets/css/fonts.min.css') }}"]
             },
-            active: function () { sessionStorage.fonts = true; }
+            active: function() {
+                sessionStorage.fonts = true;
+            }
         });
     </script>
 
@@ -31,7 +35,8 @@
     <link rel="stylesheet" href="{{ asset('assets/css/kaiadmin.min.css') }}" />
 
     <style>
-        html, body {
+        html,
+        body {
             height: 100%;
             margin: 0;
             overflow: hidden;
@@ -118,13 +123,9 @@
                     <label for="email">Email Address</label>
                     <div class="input-icon">
                         <span class="input-icon-addon"><i class="fa fa-envelope"></i></span>
-                        <input type="email"
-                               class="form-control @error('email') is-invalid @enderror"
-                               id="email"
-                               name="email"
-                               value="{{ old('email') }}"
-                               required autofocus
-                               placeholder="Enter your email">
+                        <input type="email" class="form-control @error('email') is-invalid @enderror" id="email"
+                            name="email" value="{{ old('email') }}" required autofocus
+                            placeholder="Enter your email">
                     </div>
                     @error('email')
                         <small class="form-text text-danger">{{ $message }}</small>
@@ -136,12 +137,8 @@
                     <label for="password">Password</label>
                     <div class="input-icon">
                         <span class="input-icon-addon"><i class="fa fa-lock"></i></span>
-                        <input type="password"
-                               class="form-control @error('password') is-invalid @enderror"
-                               id="password"
-                               name="password"
-                               required
-                               placeholder="Enter your password">
+                        <input type="password" class="form-control @error('password') is-invalid @enderror"
+                            id="password" name="password" required placeholder="Enter your password">
                     </div>
                     @error('password')
                         <small class="form-text text-danger">{{ $message }}</small>
@@ -157,10 +154,15 @@
                     <a href="{{ route('password.request') }}" class="text-primary">Forgot password?</a>
                 </div>
 
-                <!-- Login Button -->
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary btn-login">Login</button>
+                <div class="d-grid gap-2 mb-3">
+                    <button type="submit" class="btn btn-primary btn-lg">
+                        <i class="fas fa-sign-in-alt me-2"></i> Login
+                    </button>
+                    <a href="/" class="btn btn-outline-secondary btn-lg">
+                        <i class="fas fa-arrow-left me-2"></i> Visit Website
+                    </a>
                 </div>
+
             </form>
         </div>
     </div>

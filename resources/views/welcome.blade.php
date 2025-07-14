@@ -241,6 +241,7 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            text-decoration: none;
         }
 
         .auth-btn:hover {
