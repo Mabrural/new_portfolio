@@ -255,7 +255,10 @@
     <!-- Skill Section -->
     <section class="py-5 bg-light">
         <div class="container py-5">
-            <h2 class="text-center section-title">Keahlian Teknis</h2>
+            <div class="text-center">
+                <h2 class="section-title">Keahlian Teknis</h2>
+            </div>
+
 
             <div class="row g-4 mt-4">
                 @foreach ($skills as $skill)
@@ -276,8 +279,11 @@
     {{-- Portfolio Section --}}
     <section class="py-5" id="portfolio">
         <div class="container py-5">
-            <h2 class="text-center section-title">Portofolio</h2>
-            <p class="text-center mb-5">Beberapa proyek terbaru yang telah saya kerjakan</p>
+            <div class="text-center">
+                <h2 class="section-title">Portofolio</h2>
+                <p class="mb-5">Beberapa proyek terbaru yang telah saya kerjakan</p>
+            </div>
+
 
             <div class="row g-4">
                 @foreach ($portfolios as $portfolio)
@@ -336,8 +342,10 @@
 
     <section class="py-5 bg-light" id="contact">
         <div class="container py-5">
-            <h2 class="text-center section-title">Hubungi Saya</h2>
-            <p class="text-center mb-5">Saya terbuka untuk peluang baru dan proyek kolaborasi</p>
+            <div class="text-center">
+                <h2 class="section-title">Hubungi Saya</h2>
+                <p class="mb-5">Saya terbuka untuk peluang baru dan proyek kolaborasi</p>
+            </div>
 
             <div class="row justify-content-center">
                 <div class="col-lg-10">
