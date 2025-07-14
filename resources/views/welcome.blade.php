@@ -234,14 +234,15 @@
                     <h1 class="display-4">{{ $hero->name }}</h1>
                     <h2 class="h3 mb-4">{{ $hero->subname }}</h2>
                     <p class="lead mb-4">{{ $hero->description }}</p>
-                    <div class="d-flex gap-3">
-                        <a href="#contact" class="btn btn-primary btn-lg">
+                    <div class="d-flex flex-column flex-md-row gap-2">
+                        <a href="#contact" class="btn btn-primary px-3 py-2">
                             <i class="fas fa-paper-plane me-2"></i> Hubungi Saya
                         </a>
-                        <a href="#portfolio" class="btn btn-outline-light btn-lg">
+                        <a href="#portfolio" class="btn btn-outline-light px-3 py-2">
                             <i class="fas fa-eye me-2"></i> Portofolio
                         </a>
                     </div>
+
                 </div>
                 <div class="col-lg-6 d-none d-lg-block">
                     <img src="{{ asset('storage/' . $hero->image) }}" alt="Laravel Developer"
@@ -333,55 +334,98 @@
     </section>
 
 
-
-    <!-- Contact Section -->
     <section class="py-5 bg-light" id="contact">
         <div class="container py-5">
             <h2 class="text-center section-title">Hubungi Saya</h2>
             <p class="text-center mb-5">Saya terbuka untuk peluang baru dan proyek kolaborasi</p>
 
-            <div class="contact-card">
-                <div class="row">
-                    <div class="col-md-6 mb-4">
-                        <div class="d-flex align-items-center mb-3">
-                            <div class="contact-icon">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div>
-                                <h5 class="mb-0">Email</h5>
-                                <a href="mailto:kamu@email.com" class="text-decoration-none">kamu@email.com</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 mb-4">
-                        <div class="d-flex align-items-center mb-3">
-                            <div class="contact-icon">
-                                <i class="fab fa-whatsapp"></i>
-                            </div>
-                            <div>
-                                <h5 class="mb-0">WhatsApp</h5>
-                                <a href="https://wa.me/628123456789" class="text-decoration-none">+62 812-3456-789</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                                @php
+                                    $contacts = [
+                                        [
+                                            'icon' => 'fas fa-envelope',
+                                            'color' => 'text-primary',
+                                            'label' => 'Email',
+                                            'value' => $contact->email ?? '-',
+                                            'href' => $contact->email ? 'mailto:' . $contact->email : null,
+                                        ],
+                                        [
+                                            'icon' => 'fab fa-whatsapp',
+                                            'color' => 'text-success',
+                                            'label' => 'WhatsApp',
+                                            'value' => $contact->whatsapp ? '+' . $contact->whatsapp : '-',
+                                            'href' => $contact->whatsapp ? 'https://wa.me/' . $contact->whatsapp : null,
+                                        ],
+                                        [
+                                            'icon' => 'fab fa-linkedin',
+                                            'color' => 'text-primary',
+                                            'label' => 'LinkedIn',
+                                            'value' => $contact->linkedin ?? '-',
+                                            'href' => $contact->linkedin,
+                                        ],
+                                        [
+                                            'icon' => 'fab fa-instagram',
+                                            'color' => 'text-danger',
+                                            'label' => 'Instagram',
+                                            'value' => $contact->instagram ?? '-',
+                                            'href' => $contact->instagram,
+                                        ],
+                                        [
+                                            'icon' => 'fab fa-github',
+                                            'color' => 'text-dark',
+                                            'label' => 'GitHub',
+                                            'value' => $contact->github ?? '-',
+                                            'href' => $contact->github,
+                                        ],
+                                        [
+                                            'icon' => 'fab fa-facebook',
+                                            'color' => 'text-info',
+                                            'label' => 'Facebook',
+                                            'value' => $contact->facebook ?? '-',
+                                            'href' => $contact->facebook,
+                                        ],
+                                    ];
+                                @endphp
 
-                <div class="text-center mt-4">
-                    <h5 class="mb-3">Atau temui saya di</h5>
-                    <div class="social-links d-flex justify-content-center">
-                        <a href="#"><i class="fab fa-github"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
+                                @foreach ($contacts as $c)
+                                    <div class="col">
+                                        <div class="d-flex align-items-center gap-3">
+                                            <i class="{{ $c['icon'] }} fa-lg {{ $c['color'] }}"></i>
+                                            <div class="flex-grow-1">
+                                                <div class="fw-semibold">{{ $c['label'] }}</div>
+                                                <div class="text-muted text-wrap text-break">
+                                                    @if ($c['href'])
+                                                        <a href="{{ $c['href'] }}" target="_blank"
+                                                            class="text-decoration-none">
+                                                            {{ $c['value'] }}
+                                                        </a>
+                                                    @else
+                                                        {{ $c['value'] }}
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+
+
+
     <footer class="text-center py-4">
         <div class="container">
-            <p class="mb-0">&copy; 2025 Almutaqi | Fullstack Web Developer. All rights reserved.</p>
+            <p class="mb-0">&copy; 2025 {{ $hero->name }} - {{ $hero->subname }}. <br>All rights reserved.</p>
         </div>
     </footer>
 
