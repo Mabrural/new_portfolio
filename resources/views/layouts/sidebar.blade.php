@@ -2,7 +2,7 @@
 <div class="sidebar" data-background-color="dark">
     <div class="sidebar-logo">
         <div class="logo-header" data-background-color="dark">
-            <a href="index.html" class="logo text-white text-decoration-none fw-bold d-flex align-items-center"
+            <a href="/" class="logo text-white text-decoration-none fw-bold d-flex align-items-center"
                 style="font-size: 20px;">
                 <i class="fas fa-user-tie me-2"></i> My Portfolio
             </a>
@@ -28,6 +28,12 @@
                     <a href="{{ route('dashboard') }}">
                         <i class="fas fa-tachometer-alt"></i>
                         <p>Dashboard</p>
+                    </a>
+                </li>
+                <li class="nav-item {{ request()->routeIs('heroes*') ? 'active' : '' }}">
+                    <a href="{{ route('heroes.index') }}">
+                        <i class="fas fa-bullhorn"></i>
+                        <p>Manage Hero Section</p>
                     </a>
                 </li>
                 <li class="nav-item {{ request()->routeIs('my-portfolio') ? 'active' : '' }}">
