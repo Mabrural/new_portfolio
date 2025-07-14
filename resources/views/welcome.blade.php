@@ -241,7 +241,7 @@
           </div>
         </div>
         <div class="col-lg-6 d-none d-lg-block">
-          <img src="https://via.placeholder.com/500x400/6c63ff/ffffff?text=Laravel+Developer" alt="Laravel Developer" class="img-fluid rounded-3 shadow">
+          <img src="{{ asset('assets/img/Hire-Laravel-Developer.png') }}" alt="Laravel Developer" class="img-fluid rounded-3 shadow">
         </div>
       </div>
     </div>
@@ -354,7 +354,7 @@
           <div class="row g-4">
             <div class="col-md-4">
               <div class="card project">
-                <img src="https://via.placeholder.com/600x400/6c63ff/ffffff?text=Sistem+Inventory" class="card-img-top" alt="Sistem Inventory">
+                <img src="{{ asset('assets/img/laravel_banner011.png') }}" class="card-img-top" alt="Sistem Inventory">
                 <div class="card-body">
                   <h5 class="card-title">Sistem Manajemen Inventory</h5>
                   <p class="card-text">Aplikasi inventory dengan multi-gudang, notifikasi stok minimum, dan laporan bulanan.</p>
@@ -369,7 +369,7 @@
             </div>
             <div class="col-md-4">
               <div class="card project">
-                <img src="https://via.placeholder.com/600x400/6c63ff/ffffff?text=HR+System" class="card-img-top" alt="HR System">
+                <img src="{{ asset('assets/img/laravel_banner011.png') }}" class="card-img-top" alt="HR System">
                 <div class="card-body">
                   <h5 class="card-title">Sistem HR & Payroll</h5>
                   <p class="card-text">Manajemen karyawan, absensi, penggajian dengan slip gaji otomatis.</p>
@@ -384,7 +384,7 @@
             </div>
             <div class="col-md-4">
               <div class="card project">
-                <img src="https://via.placeholder.com/600x400/6c63ff/ffffff?text=POS+System" class="card-img-top" alt="POS System">
+                <img src="{{ asset('assets/img/laravel_banner011.png') }}" class="card-img-top" alt="POS System">
                 <div class="card-body">
                   <h5 class="card-title">Aplikasi Kasir Modern</h5>
                   <p class="card-text">Sistem point-of-sale dengan inventori, laporan keuangan, dan ekspor PDF/Excel.</p>
