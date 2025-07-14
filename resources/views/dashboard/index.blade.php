@@ -10,93 +10,95 @@
                 </div>
             </div>
             <div class="row">
-                <!-- Vessels -->
+                <!-- Manage Hero Section -->
                 <div class="col-sm-6 col-md-3">
-                    <div class="card card-stats card-round">
-                        <div class="card-body">
-                            <div class="row align-items-center">
-                                <div class="col-icon">
-                                    <div class="icon-big text-center icon-primary bubble-shadow-small">
-                                        <i class="fas fa-ship"></i>
+                    <a href="{{ route('heroes.index') }}" class="text-decoration-none text-dark">
+                        <div class="card card-stats card-round">
+                            <div class="card-body">
+                                <div class="row align-items-center">
+                                    <div class="col-icon">
+                                        <div class="icon-big text-center icon-primary bubble-shadow-small">
+                                            <i class="fas fa-bullhorn"></i>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col col-stats ms-3 ms-sm-0">
-                                    <div class="numbers">
-                                        <p class="card-category">Total Vessels</p>
-                                        <h4 class="card-title">{{ $totalVessels ?? '' }}</h4>
+                                    <div class="col col-stats ms-3 ms-sm-0">
+                                        <div class="numbers">
+                                            <p class="card-category mb-0">Manage Hero Section</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
 
-                <!-- SPK -->
+                <!-- Manage Skill Section -->
                 <div class="col-sm-6 col-md-3">
-                    <div class="card card-stats card-round">
-                        <div class="card-body">
-                            <div class="row align-items-center">
-                                <div class="col-icon">
-                                    <div class="icon-big text-center icon-info bubble-shadow-small">
-                                        <i class="fas fa-file-contract"></i>
+                    <a href="{{ route('skills.index') }}" class="text-decoration-none text-dark">
+                        <div class="card card-stats card-round">
+                            <div class="card-body">
+                                <div class="row align-items-center">
+                                    <div class="col-icon">
+                                        <div class="icon-big text-center icon-info bubble-shadow-small">
+                                            <i class="fas fa-code"></i>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col col-stats ms-3 ms-sm-0">
-                                    <div class="numbers">
-                                        <p class="card-category">SPK This Period</p>
-                                        <h4 class="card-title">{{ $totalSPK ?? '' }}</h4>
+                                    <div class="col col-stats ms-3 ms-sm-0">
+                                        <div class="numbers">
+                                            <p class="card-category mb-0">Manage Skill Section</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
 
-                <!-- Termin -->
+                <!-- Manage My Portfolio -->
                 <div class="col-sm-6 col-md-3">
-                    <div class="card card-stats card-round">
-                        <div class="card-body">
-                            <div class="row align-items-center">
-                                <div class="col-icon">
-                                    <div class="icon-big text-center icon-success bubble-shadow-small">
-                                        <i class="fas fa-calendar-alt"></i>
+                    <a href="{{ route('portfolio.index') }}" class="text-decoration-none text-dark">
+                        <div class="card card-stats card-round">
+                            <div class="card-body">
+                                <div class="row align-items-center">
+                                    <div class="col-icon">
+                                        <div class="icon-big text-center icon-success bubble-shadow-small">
+                                            <i class="fas fa-briefcase"></i>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col col-stats ms-3 ms-sm-0">
-                                    <div class="numbers">
-                                        <p class="card-category">Termin</p>
-                                        <h4 class="card-title">{{ $totalTermin ?? '' }}</h4>
+                                    <div class="col col-stats ms-3 ms-sm-0">
+                                        <div class="numbers">
+                                            <p class="card-category mb-0">Manage My Portfolio</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
 
-                <!-- Shipment -->
+                <!-- Manage My Contact -->
                 <div class="col-sm-6 col-md-3">
-                    <div class="card card-stats card-round">
-                        <div class="card-body">
-                            <div class="row align-items-center">
-                                <div class="col-icon">
-                                    <div class="icon-big text-center icon-secondary bubble-shadow-small">
-                                        <i class="fas fa-truck-loading"></i>
+                    <a href="{{ route('contact.index') }}" class="text-decoration-none text-dark">
+                        <div class="card card-stats card-round">
+                            <div class="card-body">
+                                <div class="row align-items-center">
+                                    <div class="col-icon">
+                                        <div class="icon-big text-center icon-secondary bubble-shadow-small">
+                                            <i class="fas fa-address-book"></i>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col col-stats ms-3 ms-sm-0">
-                                    <div class="numbers">
-                                        <p class="card-category">Shipments</p>
-                                        <h4 class="card-title">{{ $totalShipment ?? '' }}</h4>
+                                    <div class="col col-stats ms-3 ms-sm-0">
+                                        <div class="numbers">
+                                            <p class="card-category mb-0">Manage My Contact</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
 
             </div>
-
-
         </div>
     </div>
 @endsection
