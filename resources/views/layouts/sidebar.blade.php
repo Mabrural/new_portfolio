@@ -36,6 +36,12 @@
                         <p>Manage Hero Section</p>
                     </a>
                 </li>
+                <li class="nav-item {{ request()->routeIs('skills.*') ? 'active' : '' }}">
+                    <a href="{{ route('skills.index') }}">
+                        <i class="fas fa-code"></i>
+                        <p>Manage Skill Section</p>
+                    </a>
+                </li>
                 <li class="nav-item {{ request()->routeIs('my-portfolio') ? 'active' : '' }}">
                     <a href="{{ route('dashboard') }}">
                         <i class="fas fa-briefcase"></i>
