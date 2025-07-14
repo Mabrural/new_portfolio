@@ -1,39 +1,186 @@
-<x-guest-layout>
-    <form method="POST" action="{{ route('password.store') }}">
-        @csrf
+<!DOCTYPE html>
+<html lang="en">
 
-        <!-- Password Reset Token -->
-        <input type="hidden" name="token" value="{{ $request->route('token') }}">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Reset Password - MyPortfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel="icon" href="{{ asset('assets/img/favicon.png') }}" type="image/x-icon" />
 
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email', $request->email)" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+    <!-- Fonts and icons -->
+    <script src="{{ asset('assets/js/plugin/webfont/webfont.min.js') }}"></script>
+    <script>
+        WebFont.load({
+            google: { families: ["Public Sans:300,400,500,600,700"] },
+            custom: {
+                families: [
+                    "Font Awesome 5 Solid",
+                    "Font Awesome 5 Regular",
+                    "Font Awesome 5 Brands",
+                    "simple-line-icons"
+                ],
+                urls: ["{{ asset('assets/css/fonts.min.css') }}"]
+            },
+            active: function () { sessionStorage.fonts = true; }
+        });
+    </script>
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/plugins.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/kaiadmin.min.css') }}" />
+
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            overflow: hidden;
+            background-color: #f0f2f5;
+        }
+
+        .login-page {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .login-card {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.08);
+            background: #ffffff;
+            padding: 2.5rem;
+            width: 100%;
+            max-width: 420px;
+        }
+
+        .login-logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .login-subtitle {
+            text-align: center;
+            font-size: 13px;
+            color: #6c757d;
+            margin-bottom: 30px;
+        }
+
+        .form-control {
+            height: 45px;
+            border-radius: 6px;
+        }
+
+        .btn-login {
+            height: 45px;
+            border-radius: 6px;
+            font-weight: 600;
+            width: 100%;
+        }
+
+        .input-icon .form-control {
+            padding-left: 40px;
+        }
+
+        .text-muted {
+            color: #6c757d !important;
+        }
+
+        @media (max-width: 576px) {
+            .login-card {
+                padding: 1.5rem;
+                border-radius: 8px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-page">
+        <div class="login-card">
+            <div class="login-logo">
+                <h2>MyPortfolio</h2>
+            </div>
+            <p class="login-subtitle">Enter your email and new password to reset</p>
+
+            <form method="POST" action="{{ route('password.store') }}">
+                @csrf
+
+                <!-- Password Reset Token -->
+                <input type="hidden" name="token" value="{{ $request->route('token') }}">
+
+                <!-- Email -->
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <div class="input-icon">
+                        <span class="input-icon-addon"><i class="fa fa-envelope"></i></span>
+                        <input type="email"
+                               class="form-control @error('email') is-invalid @enderror"
+                               id="email"
+                               name="email"
+                               value="{{ old('email', $request->email) }}"
+                               required
+                               autofocus
+                               placeholder="Enter your email">
+                    </div>
+                    @error('email')
+                        <small class="form-text text-danger">{{ $message }}</small>
+                    @enderror
+                </div>
+
+                <!-- Password -->
+                <div class="form-group mt-3">
+                    <label for="password">New Password</label>
+                    <div class="input-icon">
+                        <span class="input-icon-addon"><i class="fa fa-lock"></i></span>
+                        <input type="password"
+                               class="form-control @error('password') is-invalid @enderror"
+                               id="password"
+                               name="password"
+                               required
+                               placeholder="Enter new password">
+                    </div>
+                    @error('password')
+                        <small class="form-text text-danger">{{ $message }}</small>
+                    @enderror
+                </div>
+
+                <!-- Confirm Password -->
+                <div class="form-group mt-3">
+                    <label for="password_confirmation">Confirm Password</label>
+                    <div class="input-icon">
+                        <span class="input-icon-addon"><i class="fa fa-lock"></i></span>
+                        <input type="password"
+                               class="form-control @error('password_confirmation') is-invalid @enderror"
+                               id="password_confirmation"
+                               name="password_confirmation"
+                               required
+                               placeholder="Confirm new password">
+                    </div>
+                    @error('password_confirmation')
+                        <small class="form-text text-danger">{{ $message }}</small>
+                    @enderror
+                </div>
+
+                <div class="form-group mt-4 mb-3">
+                    <button type="submit" class="btn btn-primary btn-login">
+                        Reset Password
+                    </button>
+                </div>
+
+                <div class="text-center">
+                    <a href="{{ route('login') }}" class="text-primary">Back to login</a>
+                </div>
+            </form>
         </div>
+    </div>
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-            <x-text-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
+    <!-- Core JS Files -->
+    <script src="{{ asset('assets/js/core/jquery-3.7.1.min.js') }}"></script>
+    <script src="{{ asset('assets/js/core/popper.min.js') }}"></script>
+    <script src="{{ asset('assets/js/core/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/js/kaiadmin.min.js') }}"></script>
+</body>
 
-        <!-- Confirm Password -->
-        <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
-
-            <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                                type="password"
-                                name="password_confirmation" required autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            <x-primary-button>
-                {{ __('Reset Password') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+</html>

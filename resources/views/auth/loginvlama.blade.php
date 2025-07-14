@@ -3,7 +3,7 @@
 
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Reset Password - MyPortfolio</title>
+    <title>Login - PetroPlan</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <link rel="icon" href="{{ asset('assets/img/favicon.png') }}" type="image/x-icon" />
 
@@ -60,9 +60,14 @@
             margin-bottom: 30px;
         }
 
+        .login-logo img {
+            height: 100px;
+            max-width: 100%;
+        }
+
         .login-subtitle {
             text-align: center;
-            font-size: 13px;
+            font-size: 16px;
             color: #6c757d;
             margin-bottom: 30px;
         }
@@ -79,18 +84,18 @@
             width: 100%;
         }
 
-        .input-icon .form-control {
-            padding-left: 40px;
-        }
-
-        .text-muted {
-            color: #6c757d !important;
+        .form-check-label {
+            margin-left: 5px;
         }
 
         @media (max-width: 576px) {
             .login-card {
                 padding: 1.5rem;
                 border-radius: 8px;
+            }
+
+            .login-logo img {
+                height: 80px;
             }
         }
     </style>
@@ -100,18 +105,12 @@
     <div class="login-page">
         <div class="login-card">
             <div class="login-logo">
-                <h2>MyPortfolio</h2>
+                <h2>MyPorfolio</h2>
             </div>
-            <p class="login-subtitle">Enter your email to receive a password reset link</p>
+            <p class="login-subtitle">Sign in to manage your portfolio content</p>
 
-            <!-- Session Status -->
-            @if (session('status'))
-                <div class="alert alert-success mb-4">
-                    {{ session('status') }}
-                </div>
-            @endif
-
-            <form method="POST" action="{{ route('password.email') }}">
+            <!-- Login Form -->
+            <form method="POST" action="{{ route('login') }}">
                 @csrf
 
                 <!-- Email Input -->
@@ -124,8 +123,7 @@
                                id="email"
                                name="email"
                                value="{{ old('email') }}"
-                               required
-                               autofocus
+                               required autofocus
                                placeholder="Enter your email">
                     </div>
                     @error('email')
@@ -133,14 +131,35 @@
                     @enderror
                 </div>
 
-                <div class="form-group mt-4 mb-3">
-                    <button type="submit" class="btn btn-primary btn-login">
-                        Send Reset Link
-                    </button>
+                <!-- Password Input -->
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="input-icon">
+                        <span class="input-icon-addon"><i class="fa fa-lock"></i></span>
+                        <input type="password"
+                               class="form-control @error('password') is-invalid @enderror"
+                               id="password"
+                               name="password"
+                               required
+                               placeholder="Enter your password">
+                    </div>
+                    @error('password')
+                        <small class="form-text text-danger">{{ $message }}</small>
+                    @enderror
                 </div>
 
-                <div class="text-center">
-                    <a href="{{ route('login') }}" class="text-primary">Back to login</a>
+                <!-- Remember Me -->
+                <div class="form-group d-flex justify-content-between align-items-center mb-4">
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="remember_me" name="remember">
+                        <label class="form-check-label" for="remember_me">Remember me</label>
+                    </div>
+                    <a href="{{ route('password.request') }}" class="text-primary">Forgot password?</a>
+                </div>
+
+                <!-- Login Button -->
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-login">Login</button>
                 </div>
             </form>
         </div>

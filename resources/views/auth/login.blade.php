@@ -67,7 +67,7 @@
 
         .login-subtitle {
             text-align: center;
-            font-size: 16px;
+            font-size: 13px;
             color: #6c757d;
             margin-bottom: 30px;
         }
@@ -105,9 +105,9 @@
     <div class="login-page">
         <div class="login-card">
             <div class="login-logo">
-                {{-- <img src="{{ asset('assets/img/PetroPlan-logo.png') }}" alt="Portfolio Logo"> --}}
+                <h2>MyPorfolio</h2>
             </div>
-            <p class="login-subtitle">Please log in to manage the content system</p>
+            <p class="login-subtitle">Sign in to manage your portfolio content</p>
 
             <!-- Login Form -->
             <form method="POST" action="{{ route('login') }}">
