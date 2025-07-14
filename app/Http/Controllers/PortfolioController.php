@@ -10,7 +10,7 @@ class PortfolioController extends Controller
 {
     public function index()
     {
-        $portfolios = Portfolio::all();
+        $portfolios = Portfolio::orderBy('id', 'desc')->get();
         return view('portfolios.index', compact('portfolios'));
     }
 

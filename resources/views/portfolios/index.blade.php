@@ -105,19 +105,21 @@
                                 </div>
 
                                 <div class="card-footer bg-transparent border-0 pt-0 pb-3 px-3">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <button class="btn btn-sm btn-outline-primary" data-bs-toggle="offcanvas"
+                                    <div
+                                        class="d-flex flex-column flex-md-row justify-content-between align-items-start gap-2">
+                                        <button class="btn btn-sm btn-outline-primary w-100 w-md-auto"
+                                            data-bs-toggle="offcanvas"
                                             data-bs-target="#portfolioDetails{{ $portfolio->id }}"
                                             aria-controls="portfolioDetails{{ $portfolio->id }}">
                                             <i class="fas fa-eye me-1"></i> View Details
                                         </button>
 
-                                        <div class="dropdown">
-                                            <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button"
+                                        <div class="dropdown w-100 w-md-auto">
+                                            <button class="btn btn-sm btn-outline-secondary w-100 w-md-auto" type="button"
                                                 data-bs-toggle="dropdown">
-                                                <i class="fas fa-ellipsis-h"></i>
+                                                <i class="fas fa-ellipsis-h me-1"></i> More
                                             </button>
-                                            <ul class="dropdown-menu dropdown-menu-end">
+                                            <ul class="dropdown-menu dropdown-menu-end w-100">
                                                 <li>
                                                     <a class="dropdown-item"
                                                         href="{{ route('portfolio.edit', $portfolio) }}">
@@ -131,18 +133,18 @@
                                                         @method('DELETE')
                                                         <a class="dropdown-item text-danger" href="#"
                                                             onclick="event.preventDefault(); 
-                                                       Swal.fire({
-                                                           title: 'Delete Project?',
-                                                           text: 'Are you sure you want to delete this portfolio project?',
-                                                           icon: 'warning',
-                                                           showCancelButton: true,
-                                                           confirmButtonColor: '#d33',
-                                                           confirmButtonText: 'Yes, delete it!'
-                                                       }).then((result) => {
-                                                           if (result.isConfirmed) {
-                                                               document.getElementById('deleteForm{{ $portfolio->id }}').submit();
-                                                           }
-                                                       });">
+                            Swal.fire({
+                                title: 'Delete Project?',
+                                text: 'Are you sure you want to delete this portfolio project?',
+                                icon: 'warning',
+                                showCancelButton: true,
+                                confirmButtonColor: '#d33',
+                                confirmButtonText: 'Yes, delete it!'
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    document.getElementById('deleteForm{{ $portfolio->id }}').submit();
+                                }
+                            });">
                                                             <i class="fas fa-trash-alt me-2"></i> Delete
                                                         </a>
                                                     </form>
@@ -151,6 +153,7 @@
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
 
@@ -225,26 +228,26 @@
                 </div>
             @endif
         </div>
-    </div>
-
-    <!-- Image Modal -->
-    <div class="modal fade" id="imageModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg">
-            <div class="modal-content border-0">
-                <div class="modal-body p-0">
-                    <img src="" id="modalImage" class="img-fluid w-100" alt="Project Image">
-                </div>
-                <div class="modal-footer justify-content-center border-0">
-                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
-                        <i class="fas fa-times me-2"></i> Close
-                    </button>
-                    <a href="#" id="downloadImage" class="btn btn-primary" download>
-                        <i class="fas fa-download me-2"></i> Download
-                    </a>
+        <!-- Image Modal -->
+        <div class="modal fade" id="imageModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content border-0">
+                    <div class="modal-body p-0">
+                        <img src="" id="modalImage" class="img-fluid w-100" alt="Project Image">
+                    </div>
+                    <div class="modal-footer justify-content-center border-0">
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                            <i class="fas fa-times me-2"></i> Close
+                        </button>
+                        <a href="#" id="downloadImage" class="btn btn-primary" download>
+                            <i class="fas fa-download me-2"></i> Download
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
 
     <style>
         .portfolio-card {
@@ -302,9 +305,14 @@
         }
 
         .offcanvas {
-            width: 500px;
-            max-width: 90vw;
+            top: 0 !important;
+            height: 100vh !important;
+            max-height: 100vh;
+            border-top: none;
+            padding-top: 0 !important;
+            margin-top: 0 !important;
         }
+
 
         .offcanvas-footer {
             background-color: #f8f9fa;
@@ -314,6 +322,12 @@
             .offcanvas {
                 width: 85vw;
             }
+        }
+
+        body,
+        html {
+            margin: 0;
+            padding: 0;
         }
     </style>
 
