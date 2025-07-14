@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Hero;
+use App\Models\Skill;
 use Illuminate\Http\Request;
 
 class WelcomeController extends Controller
@@ -10,6 +11,7 @@ class WelcomeController extends Controller
     public function index()
     {
         $hero = Hero::first();
-        return view('welcome', compact('hero'));
+        $skills = Skill::all();
+        return view('welcome', compact('hero', 'skills'));
     }
 }

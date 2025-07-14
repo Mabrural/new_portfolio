@@ -255,85 +255,23 @@
     <section class="py-5 bg-light">
         <div class="container py-5">
             <h2 class="text-center section-title">Keahlian Teknis</h2>
-            <div class="row g-4 mt-4">
-                <div class="col-md-3">
-                    <div class="skill-card">
-                        <div class="skill-icon">
-                            <i class="fab fa-laravel"></i>
-                        </div>
-                        <h4>Laravel Expert</h4>
-                        <p class="mb-0">Pengembangan aplikasi kompleks dengan framework PHP modern</p>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="skill-card">
-                        <div class="skill-icon">
-                            <i class="fas fa-database"></i>
-                        </div>
-                        <h4>Database Design</h4>
-                        <p class="mb-0">Struktur database optimal dengan MySQL, PostgreSQL</p>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="skill-card">
-                        <div class="skill-icon">
-                            <i class="fas fa-server"></i>
-                        </div>
-                        <h4>API Development</h4>
-                        <p class="mb-0">RESTful API dengan autentikasi JWT & Sanctum</p>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="skill-card">
-                        <div class="skill-icon">
-                            <i class="fas fa-file-export"></i>
-                        </div>
-                        <h4>Laporan & Export</h4>
-                        <p class="mb-0">Generasi PDF, Excel, CSV dengan Laravel Excel</p>
-                    </div>
-                </div>
-            </div>
 
-            <div class="row g-4 mt-2">
-                <div class="col-md-3">
-                    <div class="skill-card">
-                        <div class="skill-icon">
-                            <i class="fab fa-html5"></i>
+            <div class="row g-4 mt-4">
+                @foreach ($skills as $skill)
+                    <div class="col-md-3">
+                        <div class="skill-card">
+                            <div class="skill-icon">
+                                <i class="{{ $skill->icon }}"></i>
+                            </div>
+                            <h4>{{ $skill->name }}</h4>
+                            <p class="mb-0">{{ $skill->subname }}</p>
                         </div>
-                        <h4>Frontend</h4>
-                        <p class="mb-0">HTML5, CSS3, JavaScript, Bootstrap</p>
                     </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="skill-card">
-                        <div class="skill-icon">
-                            <i class="fas fa-mobile-alt"></i>
-                        </div>
-                        <h4>Responsive Design</h4>
-                        <p class="mb-0">Website yang optimal di semua perangkat</p>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="skill-card">
-                        <div class="skill-icon">
-                            <i class="fas fa-shield-alt"></i>
-                        </div>
-                        <h4>Keamanan</h4>
-                        <p class="mb-0">Proteksi terhadap SQLi, XSS, CSRF, dll</p>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="skill-card">
-                        <div class="skill-icon">
-                            <i class="fas fa-rocket"></i>
-                        </div>
-                        <h4>Optimasi</h4>
-                        <p class="mb-0">Caching, eager loading, query optimization</p>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
+
 
     <!-- Portfolio Section -->
     <section class="py-5" id="portfolio">
@@ -351,8 +289,8 @@
                         type="button" role="tab">E-Commerce</button>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="crm-tab" data-bs-toggle="pill" data-bs-target="#crm"
-                        type="button" role="tab">CRM</button>
+                    <button class="nav-link" id="crm-tab" data-bs-toggle="pill" data-bs-target="#crm" type="button"
+                        role="tab">CRM</button>
                 </li>
             </ul>
 
