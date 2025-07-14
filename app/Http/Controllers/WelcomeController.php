@@ -17,6 +17,6 @@ class WelcomeController extends Controller
         $portfolios = Portfolio::orderBy('id', 'desc')->get();
         $contact = Contact::first();
         
-        return view('welcome', compact('hero', 'skills', 'portfolios', 'contact'));
+        return view('welcome2', compact('hero', 'skills', 'portfolios', 'contact'));
     }
 }
