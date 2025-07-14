@@ -220,10 +220,92 @@
             background: var(--primary);
             border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
         }
+
+        /* Auth Button Styles */
+        .auth-btn-container {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+        }
+
+        .auth-btn {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            border-radius: 50px;
+            padding: 8px 20px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .auth-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .auth-btn .user-avatar {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+
+        @media (max-width: 768px) {
+            .auth-btn-container {
+                top: 15px;
+                right: 15px;
+            }
+
+            .auth-btn {
+                padding: 6px 15px;
+                font-size: 0.8rem;
+            }
+        }
     </style>
 </head>
 
 <body>
+    <!-- Auth Button -->
+    <div class="auth-btn-container">
+        @auth
+            <div class="dropdown">
+                <button class="auth-btn dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    <div class="user-avatar">
+                        {{ strtoupper(substr(Auth::user()->name, 0, 1)) }}
+                    </div>
+                    {{ Auth::user()->name }}
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                    <li><a class="dropdown-item" href="{{ route('dashboard') }}">Dashboard</a></li>
+                    <li><a class="dropdown-item" href="{{ route('profile.edit') }}">Profile</a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li>
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <button type="submit" class="dropdown-item">Logout</button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        @else
+            <a href="{{ route('login') }}" class="auth-btn">
+                <i class="fas fa-sign-in-alt"></i> Masuk
+            </a>
+        @endauth
+    </div>
+
     <!-- Hero Section -->
     <section class="hero">
         <div class="floating-shape shape-1"></div>
@@ -427,9 +509,6 @@
             </div>
         </div>
     </section>
-
-
-
 
     <footer class="text-center py-4">
         <div class="container">
