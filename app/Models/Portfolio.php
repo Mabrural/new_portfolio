@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Portfolio extends Model
 {
-    
+
     use HasFactory;
 
     protected $fillable = [
@@ -15,15 +15,10 @@ class Portfolio extends Model
         'description',
         'technologies',
         'link',
+        'image1',
+        'image2',
+        'image3',
+        'image4',
+        'image5',
     ];
-
-    public function images()
-    {
-        return $this->hasMany(PortfolioImage::class);
-    }
-
-    public function mainImage()
-    {
-        return $this->hasOne(PortfolioImage::class)->where('is_main', true);
-    }
 }

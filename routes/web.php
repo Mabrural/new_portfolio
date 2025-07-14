@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HeroController;
+use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SkillController;
 use Illuminate\Support\Facades\Route;
@@ -10,7 +11,7 @@ Route::get('/', function () {
 });
 
 Route::get('/storage/{folder}/{filename}', function ($folder, $filename) {
-    $allowedFolders = ['heroes'];
+    $allowedFolders = ['heroes', 'portfolios'];
 
     if (!in_array($folder, $allowedFolders)) {
         abort(403);
@@ -32,9 +33,11 @@ Route::get('/dashboard', function () {
 Route::resource('heroes', HeroController::class);
 Route::resource('skills', SkillController::class);
 
-Route::get('portfolio', function() {
-    return "portfolio";
-})->name('portfolio.index');
+// Route::get('portfolio', function() {
+//     return "portfolio";
+// })->name('portfolio.index');
+Route::resource('portfolio', PortfolioController::class);
+
 Route::get('contact', function() {
     return "contact";
 })->name('contact.index');
