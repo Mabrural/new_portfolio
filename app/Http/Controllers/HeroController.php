@@ -13,17 +13,25 @@ class HeroController extends Controller
      */
     public function index()
     {
-        $heroes = Hero::all();
-        return view('heroes.index', compact('heroes'));
+        $hero = Hero::first();
+        return view('heroes.index', compact('hero'));
     }
+
 
     /**
      * Show the form for creating a new hero.
      */
     public function create()
     {
+        $hero = Hero::first();
+
+        if ($hero) {
+            return redirect()->route('heroes.edit', $hero)->with('info', 'Hero already exists, you can only edit.');
+        }
+
         return view('heroes.create');
     }
+
 
     /**
      * Store a newly created hero in storage.

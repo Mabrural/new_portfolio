@@ -30,7 +30,7 @@
                         <p>Dashboard</p>
                     </a>
                 </li>
-                <li class="nav-item {{ request()->routeIs('heroes*') ? 'active' : '' }}">
+                <li class="nav-item {{ request()->routeIs('heroes.*') ? 'active' : '' }}">
                     <a href="{{ route('heroes.index') }}">
                         <i class="fas fa-bullhorn"></i>
                         <p>Manage Hero Section</p>
